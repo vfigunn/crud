@@ -2,19 +2,15 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
-const dotenv = require("dotenv");
-dotenv.config();
-
-const port=process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-    host:process.env.HOST,
-    user:process.env.USER,
-    database:process.env.DATABASE,
-    password:process.env.PASSWORD
+    host:"localhost",
+    user:"root",
+    database:"gimnasio",
+    password:""
 });
 
 app.post("/create",(req,res)=>{
@@ -76,6 +72,6 @@ app.delete("/delete/:id",(req,res)=>{
     );
 });
 
-app.listen(port,()=>{
-    console.log("Corriendo en el puerto "+port)
+app.listen(4000,()=>{
+    console.log("Corriendo en el puerto "+4000)
 })
