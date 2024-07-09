@@ -16,9 +16,9 @@ function App() {
   const [editar,setEditar] = useState(false);
   
   const [clientesList,setClientes] = useState([]);
-
+//http://localhost:4000/create
   const add = ()=>{
-    Axios.post("http://localhost:4000/create",{
+    Axios.post("mysql://ut9rhpvwy4kigyrg:RY9UvMJb0EbVIhbawcm5@bgbfdqiu99axo7lbqaf2-mysql.services.clever-cloud.com:3306/bgbfdqiu99axo7lbqaf2/create",{
       nombre:nombre,
       dni:dni,
       email:email
@@ -41,7 +41,7 @@ function App() {
   }
 
   const update = ()=>{
-    Axios.put("http://localhost:4000/update",{
+    Axios.put("mysql://ut9rhpvwy4kigyrg:RY9UvMJb0EbVIhbawcm5@bgbfdqiu99axo7lbqaf2-mysql.services.clever-cloud.com:3306/bgbfdqiu99axo7lbqaf2/update",{
       id:id,
       nombre:nombre,
       dni:dni,
@@ -76,7 +76,7 @@ function App() {
       cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
-        Axios.delete("http://localhost:4000/delete/"+val.id).then(()=>{
+        Axios.delete("mysql://ut9rhpvwy4kigyrg:RY9UvMJb0EbVIhbawcm5@bgbfdqiu99axo7lbqaf2-mysql.services.clever-cloud.com:3306/bgbfdqiu99axo7lbqaf2/delete/"+val.id).then(()=>{
           getClientes();
           limpiarCampos();
           Swal.fire({
@@ -115,7 +115,7 @@ function App() {
   }
 
   const getClientes = ()=>{
-    Axios.get("http://localhost:4000/clientes").then((response)=>{
+    Axios.get("mysql://ut9rhpvwy4kigyrg:RY9UvMJb0EbVIhbawcm5@bgbfdqiu99axo7lbqaf2-mysql.services.clever-cloud.com:3306/bgbfdqiu99axo7lbqaf2/clientes").then((response)=>{
       setClientes(response.data);
     });
   }
